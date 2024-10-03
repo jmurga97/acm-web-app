@@ -19,7 +19,7 @@ import NavDrawer from "./NavDrawer";
 interface NavBarProps {
   atTop: boolean;
   pages: Array<any>;
-  openCart: boolean;
+  openCart: () => void;
 }
 
 const NavBar = ({ atTop, pages, openCart }:NavBarProps) => {

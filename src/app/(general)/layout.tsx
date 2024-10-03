@@ -1,11 +1,7 @@
-import "@/assets/styles/globals.css";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import "../assets/styles/globals.css";
 import { Montserrat } from "next/font/google";
-import { LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
-// import { analytics } from "@/firebase/analytics";
-// import { useRouter } from "next/navigation";
-// import { useEffect } from "react";
 
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const colors = {
   brand: {
@@ -28,9 +24,11 @@ const montserrat = Montserrat({
 const theme = extendTheme({ colors });
 
 
-function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  // const router = useRouter();
+//TODO: fix el puto useEffect para que funcione analytics
+const GeneralLayout = ({ children }: { children: React.ReactNode }) => {
 
+  //Necesario para captar la navegación por cada ruta de la página para PostHog
+  //Necesario para captar la navegación por cada ruta de la página para PostHog
   // useEffect(() => {
   //   const handleRouteChange = () =>
   //     logEvent(analytics, "page_view", {
@@ -47,18 +45,15 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   //   //eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [router.events]);
 
-
   return (
-    <AnimatePresence mode="wait">
-      <ChakraProvider theme={theme}>
-        <main className={montserrat.className}>
-          <LazyMotion features={domAnimation}>
-            {children}
-          </LazyMotion>
-        </main>
-      </ChakraProvider>
-    </AnimatePresence>
+    <html lang="es">
+      <body className={`${montserrat.className}`}>
+        <ChakraProvider theme={theme}>
+          {children}
+        </ChakraProvider>
+      </body>
+    </html>
   );
-}
+};
 
-export default RootLayout
+export default GeneralLayout;
