@@ -66,7 +66,7 @@ const ProductDashboard = ({
   setDisabled,
 }:ProductDashboardProps) => {
   const [tabIndex, setTabIndex] = useState(0);
-  const tabRef = useRef();
+  const tabRef = useRef(undefined);
   const toast = useToast();
   const router = useRouter();
 

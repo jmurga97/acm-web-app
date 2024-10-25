@@ -37,7 +37,7 @@ const AdminNavLinks = ({ pages,auth }:NavBarProps) => (
 
 const NavBar = ({ pages, auth }:NavBarProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
+  const btnRef = useRef(undefined);
   return (
     <>
       <Flex

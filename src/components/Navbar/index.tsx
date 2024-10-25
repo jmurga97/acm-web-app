@@ -24,7 +24,7 @@ interface NavBarProps {
 
 const NavBar = ({ atTop, pages, openCart }:NavBarProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
+  const btnRef = useRef(undefined);
   return (
     <>
       <Flex
